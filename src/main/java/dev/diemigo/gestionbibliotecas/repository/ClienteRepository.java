@@ -1,10 +1,10 @@
 package dev.diemigo.gestionbibliotecas.Repository;
-import dev.diemigo.gestionbibliotecas.models.Clientes;
+import dev.diemigo.gestionbibliotecas.models.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface ClienteRepository extends JpaRepository<Clientes, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
 }
