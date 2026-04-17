@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Prestamo {
 
 
-
+    @
     private Integer idPrestamo;
     private Integer idLibro;
     private String runSolicitante;

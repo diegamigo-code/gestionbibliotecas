@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Clientes {
+public class Cliente {
     @Id
     @Column(unique = true)
     private int id_clientes;
