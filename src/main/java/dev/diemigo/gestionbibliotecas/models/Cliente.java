@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
+
     @Id
     @Column(unique = true)
+
     private int id_clientes;
     @Column(unique = true)
     private String nom_clientes;
