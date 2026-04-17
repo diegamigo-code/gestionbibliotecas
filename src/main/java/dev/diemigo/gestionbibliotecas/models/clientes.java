@@ -19,6 +19,6 @@ public class clientes {
     private String email_clientes;
     @Column(unique = true)
     private String rut_cliente;
-    private boolean activo;
+    private boolean valido;
 
 }
