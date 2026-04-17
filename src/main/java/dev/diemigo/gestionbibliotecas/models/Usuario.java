@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
+
     @Id
     @Column(unique = true)
-
     private int id_usuario;
     @Column(unique = true)
     private String nom_usuario;
