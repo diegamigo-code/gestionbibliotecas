@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Libro {
+
     @Id
     @Column(unique = true)
     private int id_libro;
