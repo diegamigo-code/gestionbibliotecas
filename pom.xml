@@ -22,6 +22,8 @@
 
     <modules>
         <module>auditoria</module>
+        <module>notificaciones</module>
+        <module>usuarios</module>
     </modules>
 
     <dependencyManagement>
