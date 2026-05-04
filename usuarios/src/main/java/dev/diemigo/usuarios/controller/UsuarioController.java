@@ -1,41 +1,29 @@
 package dev.diemigo.usuarios.controller;
 
 
-import dev.diemigo.usuarios.model.Usuario;
+import dev.diemigo.usuarios.dto.UsuarioRespuestaDTO;
 import dev.diemigo.usuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/v1/gestionbibliotecas/")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
-    public Usuario nuevoUsuario(Usuario usuario){
-        return usuarioService.nuevoUsuario(usuario);
+    @GetMapping
+    public ResponseEntity<?> getUsers() {
+        try {
+            List<UsuarioRespuestaDTO> usuarios = usuarioService.listarUsuarios();
+            return ResponseEntity.ok(usuarios);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error en el servidor");
+        }
     }
 
-    @GetMapping("")
-    public List<Usuario> mostrarUsuarios(){
-        return usuarioService.mostrarUsuarios();
-    }
-
-    @GetMapping("{id}")
-    public Usuario mostrarUsuario(Integer id){
-        return usuarioService.mostrarUsuario(id);
-    }
-
-    @PutMapping
-    public Usuario editarUsuario(Usuario usuario){
-        return usuarioService.editarUsuario(usuario);
-    }
-
-    @DeleteMapping
-    public void eliminarUsuario(Integer id){
-        usuarioService.borrarUsuario(id);
-    }
 }
