@@ -6,23 +6,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "Usuarios")
 @Entity
+@Table(name = "usuarios")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Email
-    @Column(length = 255, nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String correo;
 
-    @Column(length = 100, nullable = false)
+    @Column(name = "contrasenia",length = 100, nullable = false)
     private String contrasenia;
 
-    @Column
+    @Column(name = "activo")
     private boolean activo;
 }
