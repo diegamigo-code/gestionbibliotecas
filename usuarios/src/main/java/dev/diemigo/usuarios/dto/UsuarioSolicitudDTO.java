@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuarioSolicitudDTO {
-
     @Email(message = "Correo inválido")
     @NotBlank(message = "No puede estar vacío")
     private String correo;
