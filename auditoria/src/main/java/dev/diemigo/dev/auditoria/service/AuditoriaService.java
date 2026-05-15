@@ -69,4 +69,13 @@ public class AuditoriaService {
                 .fechaHora(entidad.getFechaHora())
                 .build();
     }
+    public List <AuditoriaDTO>  obtenerPorServicio(String servicioOrigen) {
+        log.debug("Buscando registros indexados por servicios origen: {}", servicioOrigen);
+        return auditoriaRepository.findByServicioOrigen(servicioOrigen).stream().map(this::convertirADTO).collect(Collectors.toList());
+    }
+
+    public List <AuditoriaDTO>  obtenerPorResultado(String resultado) {
+        log.debug("Buscando registros indexados por resultado: {}", resultado);
+        return auditoriaRepository.findByResultado(resultado).stream().map(this::convertirADTO).collect(Collectors.toList());
+    }
 }
