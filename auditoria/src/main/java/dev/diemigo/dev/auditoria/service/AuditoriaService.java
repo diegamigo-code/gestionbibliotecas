@@ -1,5 +1,6 @@
 package dev.diemigo.dev.auditoria.service;
 
+import dev.diemigo.dev.auditoria.dto.AuditoriaDTO;
 import dev.diemigo.dev.auditoria.model.RegistroAuditoria;
 import dev.diemigo.dev.auditoria.repository.RegistroAuditoriaRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -10,51 +11,71 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
-    @Service
-    public class AuditoriaService {
+@Service
+public class AuditoriaService {
 
-        private static final Logger log = LoggerFactory.getLogger(AuditoriaService.class);
+    private static final Logger log = LoggerFactory.getLogger(AuditoriaService.class);
 
-        @Autowired
-        private RegistroAuditoriaRepository auditoriaRepository;
+    @Autowired
+    private RegistroAuditoriaRepository auditoriaRepository;
 
-        public RegistroAuditoria registrar(RegistroAuditoria registro) {
-            registro.setFechaHora(LocalDateTime.now());
-            log.debug("Guardando registro de auditoría para servicio: {}", registro.getServicioOrigen());
-            RegistroAuditoria guardado = auditoriaRepository.save(registro);
-            log.info("Registro de auditoría guardado. ID: {}, Servicio: {}, Resultado: {}",
-                    guardado.getId(), guardado.getServicioOrigen(), guardado.getResultado());
-            return guardado;
-        }
+    public AuditoriaDTO registrar(AuditoriaDTO dto) {
+        log.debug("Convirtiendo DTO a Entidad para servicio: {}", dto.getServicioOrigen());
 
-        public List<RegistroAuditoria> obtenerTodos() {
-            log.debug("Obteniendo todos los registros de auditoría");
-            return auditoriaRepository.findAll();
-        }
+        RegistroAuditoria entidad = new RegistroAuditoria();
+        entidad.setServicioOrigen(dto.getServicioOrigen());
+        entidad.setAccion(dto.getAccion());
+        entidad.setDetalle(dto.getDetalle());
+        entidad.setUsuarioResponsable(dto.getUsuarioResponsable());
+        entidad.setResultado(dto.getResultado());
+        entidad.setFechaHora(LocalDateTime.now());
 
-        public Optional<RegistroAuditoria> obtenerPorId(Long id) {
-            log.debug("Buscando registro de auditoría por ID: {}", id);
-            return auditoriaRepository.findById(id);
-        }
+        RegistroAuditoria guardado = auditoriaRepository.save(entidad);
+        log.info("Registro de auditoría guardado exitosamente. ID: {}", guardado.getId());
 
-        public List<RegistroAuditoria> obtenerPorServicio(String servicioOrigen) {
-            log.debug("Buscando registros por servicio origen: {}", servicioOrigen);
-            return auditoriaRepository.findByServicioOrigen(servicioOrigen);
-        }
-
-        public List<RegistroAuditoria> obtenerPorResultado(String resultado) {
-            log.debug("Buscando registros por resultado: {}", resultado);
-            return auditoriaRepository.findByResultado(resultado);
-        }
-
-        public void eliminar(Long id) {
-            if (!auditoriaRepository.existsById(id)) {
-                log.error("Intento de eliminar registro de auditoría inexistente con ID: {}", id);
-                throw new EntityNotFoundException("Registro de auditoría no encontrado con ID: " + id);
-            }
-            auditoriaRepository.deleteById(id);
-            log.info("Registro de auditoría eliminado exitosamente. ID: {}", id);
-        }
+        return convertirADTO(guardado);
     }
+
+    public List<AuditoriaDTO> obtenerTodos() {
+        log.debug("Obteniendo todos los registros de auditoría (mapeados a DTO)");
+        return auditoriaRepository.findAll().stream()
+                .map(this::convertirADTO)
+                .collect(Collectors.toList());
+    }
+
+    public AuditoriaDTO obtenerPorId(Long id) {
+        return auditoriaRepository.findById(id)
+                .map(this::convertirADTO)
+                .orElseThrow(() -> new EntityNotFoundException("Registro no encontrado con ID: " + id));
+    }
+
+    public void eliminar(Long id) {
+        if (!auditoriaRepository.existsById(id)) {
+            throw new EntityNotFoundException("No se puede eliminar: ID " + id + " no existe");
+        }
+        auditoriaRepository.deleteById(id);
+        log.warn("Registro eliminado permanentemente. ID: {}", id);
+    }
+
+    private AuditoriaDTO convertirADTO(RegistroAuditoria entidad) {
+        return AuditoriaDTO.builder()
+                .servicioOrigen(entidad.getServicioOrigen())
+                .accion(entidad.getAccion())
+                .detalle(entidad.getDetalle())
+                .usuarioResponsable(entidad.getUsuarioResponsable())
+                .resultado(entidad.getResultado())
+                .fechaHora(entidad.getFechaHora())
+                .build();
+    }
+    public List <AuditoriaDTO>  obtenerPorServicio(String servicioOrigen) {
+        log.debug("Buscando registros indexados por servicios origen: {}", servicioOrigen);
+        return auditoriaRepository.findByServicioOrigen(servicioOrigen).stream().map(this::convertirADTO).collect(Collectors.toList());
+    }
+
+    public List <AuditoriaDTO>  obtenerPorResultado(String resultado) {
+        log.debug("Buscando registros indexados por resultado: {}", resultado);
+        return auditoriaRepository.findByResultado(resultado).stream().map(this::convertirADTO).collect(Collectors.toList());
+    }
+}
