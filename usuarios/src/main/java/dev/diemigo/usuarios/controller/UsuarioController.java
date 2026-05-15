@@ -17,7 +17,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<UsuarioRespuestaDTO>> getUsers() {
+    public ResponseEntity<List<UsuarioRespuestaDTO>> getUsuarios() {
         List<UsuarioRespuestaDTO> usuarios = usuarioService.listarUsuarios();
         return ResponseEntity.ok(usuarios);
     }

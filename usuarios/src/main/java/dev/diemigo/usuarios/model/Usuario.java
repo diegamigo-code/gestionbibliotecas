@@ -25,4 +25,8 @@ public class Usuario {
 
     @Column(name = "activo")
     private boolean activo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private UsuarioRol rol;
 }
