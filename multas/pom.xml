@@ -16,10 +16,10 @@
 
 	<!-- Datos del proyecto -->
 	<groupId>dev.diemigo</groupId>
-	<artifactId>usuarios</artifactId>
+	<artifactId>multas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>usuarios</name>
-	<description>Proyecto Spring Boot de usuarios</description>
+	<name>multas</name>
+	<description>Proyecto Spring Boot de multas</description>
 
 	<!-- Propiedades -->
 	<properties>
