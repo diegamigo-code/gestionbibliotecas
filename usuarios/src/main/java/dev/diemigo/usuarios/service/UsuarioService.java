@@ -1,6 +1,7 @@
 package dev.diemigo.usuarios.service;
 
 import dev.diemigo.usuarios.dto.UsuarioRespuestaDTO;
+import dev.diemigo.usuarios.exception.NotFoundException;
 import dev.diemigo.usuarios.model.Usuario;
 import dev.diemigo.usuarios.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ public class UsuarioService {
     }
 
     public UsuarioRespuestaDTO actualizarUsuario(int id, UsuarioRespuestaDTO dto) {
-        // CORRECCIÓN: Validar existencia antes de actuar
         return usuarioRepository.findById(id)
                 .map(usuario -> {
                     usuario.setCorreo(dto.getCorreo());
@@ -46,9 +46,8 @@ public class UsuarioService {
     }
 
     public UsuarioRespuestaDTO buscarPorId(int id) {
-        // CORRECCIÓN: Uso de Optional para evitar el .get() fallido
         Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró el usuario con ID: " + id));
+                .orElseThrow(() -> new NotFoundException("No se encontró el usuario con ID: " + id));
         return convertirADTO(usuario);
     }
 
@@ -58,4 +57,5 @@ public class UsuarioService {
         }
         usuarioRepository.deleteById(id);
     }
+    public void nada(){}
 }
