@@ -1,6 +1,6 @@
 CREATE TABLE prestamos (
-                          id          BIGINT       PRIMARY KEY AUTO_INCREMENT,
-                          correo      VARCHAR(255) UNIQUE NOT NULL,
-                          contrasenia VARCHAR(255) NOT NULL,
-                          activo      TINYINT(1)   DEFAULT 1
+                           id              BIGINT       PRIMARY KEY AUTO_INCREMENT,
+                           nombre_cliente  VARCHAR(255) NOT NULL,
+                           libro           VARCHAR(255) NOT NULL,
+                           fecha_prestamo  VARCHAR(50)  NOT NULL
 );

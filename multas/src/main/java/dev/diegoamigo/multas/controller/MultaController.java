@@ -1,14 +1,16 @@
 package dev.diegoamigo.multas.controller;
 
 import dev.diegoamigo.multas.dto.MultaDTO;
-import dev.diegoamigo.multas.model.Multa;
+import dev.diegoamigo.multas.dto.MultaRespuestaDTO;
 import dev.diegoamigo.multas.service.MultaService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/multas")
+@RequestMapping("/multas")
 public class MultaController {
 
     private final MultaService service;
@@ -18,21 +20,23 @@ public class MultaController {
     }
 
     @GetMapping
-    public List<Multa> listar() {
+    public List<MultaRespuestaDTO> listar() {
         return service.listar();
     }
 
     @PostMapping
-    public Multa guardar(@RequestBody MultaDTO dto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public MultaRespuestaDTO guardar(@Valid @RequestBody MultaDTO dto) {
         return service.guardar(dto);
     }
 
-    @GetMapping("/{id}") 
-    public Multa obtener(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public MultaRespuestaDTO obtener(@PathVariable Long id) {
         return service.obtener(id);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id) {
         service.eliminar(id);
     }

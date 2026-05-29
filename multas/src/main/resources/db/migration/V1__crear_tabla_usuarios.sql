@@ -1,6 +1,7 @@
 CREATE TABLE multas (
-                          id          BIGINT       PRIMARY KEY AUTO_INCREMENT,
-                          correo      VARCHAR(255) UNIQUE NOT NULL,
-                          contraseña VARCHAR(255) NOT NULL,
-                          activo      TINYINT(1)   DEFAULT 1
+                        id          BIGINT       PRIMARY KEY AUTO_INCREMENT,
+                        prestamo_id BIGINT       NOT NULL,
+                        monto       DOUBLE       NOT NULL,
+                        motivo      VARCHAR(255) NOT NULL,
+                        pagada      TINYINT(1)   NOT NULL DEFAULT 0
 );

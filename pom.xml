@@ -12,8 +12,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>dev.diemigo</groupId>
-    <artifactId>dev</artifactId>
+    <groupId>dev</groupId>
+    <artifactId>diemigo</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -25,13 +25,14 @@
     <modules>
         <module>auditoria</module>
         <module>notificaciones</module>
-        <module>usuarios</module>
-        <module>reserva</module>
-        <module>proveedor</module>
+        <module>reservas</module>
+        <module>proveedores</module>
         <module>prestamos</module>
         <module>multas</module>
         <module>devoluciones</module>
-
+        <module>inventario</module>
+        <module>libros</module>
+        <module>usuarios</module>
     </modules>
 
     <dependencyManagement>

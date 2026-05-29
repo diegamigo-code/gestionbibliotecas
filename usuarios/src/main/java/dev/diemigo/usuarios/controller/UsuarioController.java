@@ -23,7 +23,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crearUsuario(@Valid @RequestBody UsuarioRespuestaDTO nuevoUsuario) {
+    public ResponseEntity<?> createUsuario(@Valid @RequestBody UsuarioRespuestaDTO nuevoUsuario) {
         try {
             UsuarioRespuestaDTO usuario = usuarioService.crearUsuario(nuevoUsuario);
             return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
@@ -42,7 +42,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarUsuario(@PathVariable int id, @RequestBody UsuarioRespuestaDTO usuario) {
+    public ResponseEntity<?> updateUsuario(@PathVariable int id, @RequestBody UsuarioRespuestaDTO usuario) {
         try {
             return ResponseEntity.ok(usuarioService.actualizarUsuario(id, usuario));
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable int id) {
+    public ResponseEntity<?> deleteUsuario(@PathVariable int id) {
         try {
             usuarioService.eliminarUsuario(id);
             return ResponseEntity.noContent().build();
