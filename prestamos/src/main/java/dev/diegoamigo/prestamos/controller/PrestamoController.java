@@ -1,10 +1,11 @@
 package dev.diegoamigo.prestamos.controller;
 
 import dev.diegoamigo.prestamos.dto.PrestamoDTO;
-import dev.diegoamigo.prestamos.model.Prestamo;
+import dev.diegoamigo.prestamos.dto.PrestamoRespuestaDTO;
 import dev.diegoamigo.prestamos.service.PrestamoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,20 +18,24 @@ public class PrestamoController {
     private PrestamoService service;
 
     @PostMapping
-    public Prestamo crear(@Valid @RequestBody PrestamoDTO dto) {
-
+    @ResponseStatus(HttpStatus.CREATED)
+    public PrestamoRespuestaDTO crear(@Valid @RequestBody PrestamoDTO dto) {
         return service.crear(dto);
     }
 
     @GetMapping
-    public List<Prestamo> listar() {
-
+    public List<PrestamoRespuestaDTO> listar() {
         return service.listar();
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public PrestamoRespuestaDTO obtener(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
         service.eliminar(id);
     }
 }

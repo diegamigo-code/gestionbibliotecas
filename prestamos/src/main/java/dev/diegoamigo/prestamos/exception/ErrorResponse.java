@@ -26,7 +26,6 @@ public class ErrorResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class FieldError {
-
         private String field;
         private String message;
     }

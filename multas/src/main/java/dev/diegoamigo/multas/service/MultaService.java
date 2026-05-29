@@ -1,12 +1,14 @@
 package dev.diegoamigo.multas.service;
 
 import dev.diegoamigo.multas.dto.MultaDTO;
+import dev.diegoamigo.multas.dto.MultaRespuestaDTO;
 import dev.diegoamigo.multas.model.Multa;
 import dev.diegoamigo.multas.repository.MultaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MultaService {
@@ -17,32 +19,43 @@ public class MultaService {
         this.repository = repository;
     }
 
-    public List<Multa> listar() {
-        return repository.findAll();
+    private MultaRespuestaDTO convertirADTO(Multa m) {
+        return new MultaRespuestaDTO(
+                m.getId(),
+                m.getPrestamoId(),
+                m.getMonto(),
+                m.getMotivo(),
+                m.isPagada()
+        );
     }
 
-    public Multa guardar(MultaDTO dto) {
+    public List<MultaRespuestaDTO> listar() {
+        return repository.findAll()
+                .stream()
+                .map(this::convertirADTO)
+                .collect(Collectors.toList());
+    }
 
+    public MultaRespuestaDTO guardar(MultaDTO dto) {
         Multa multa = new Multa();
-
         multa.setPrestamoId(dto.getPrestamoId());
         multa.setMonto(dto.getMonto());
         multa.setMotivo(dto.getMotivo());
         multa.setPagada(dto.isPagada());
-
-        return repository.save(multa);
+        return convertirADTO(repository.save(multa));
     }
 
-    public Multa obtener(Long id) {
-
-        return repository.findById(id)
+    public MultaRespuestaDTO obtener(Long id) {
+        Multa multa = repository.findById(id)
                 .orElseThrow(() ->
-                        new EntityNotFoundException(
-                                "No existe multa con ID: " + id));
+                        new EntityNotFoundException("No existe multa con ID: " + id));
+        return convertirADTO(multa);
     }
 
     public void eliminar(Long id) {
-
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("No existe multa con ID: " + id);
+        }
         repository.deleteById(id);
     }
 }
