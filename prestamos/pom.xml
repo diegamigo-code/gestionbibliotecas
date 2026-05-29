@@ -13,10 +13,10 @@
     </parent>
 
     <groupId>dev.diegoamigo</groupId>
-    <artifactId>prestamos</artifactId>
+    <artifactId>multas</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>prestamos</name>
-    <description>Microservicio de préstamos</description>
+    <name>multas</name>
+    <description>Microservicio de multas</description>
 
     <properties>
         <java.version>21</java.version>
