@@ -1,4 +1,4 @@
-package proveedores.controller;
+package data.proveedores.controller;
 import data.proveedores.model.proveedor;
 import data.proveedores.services.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ public class proveedorController {
     }
 
     @GetMapping("/{id}")
-    public proveedor findById(@RequestParam int id) {
+    public proveedor findById(@PathVariable @RequestParam int id) {
         return proveedorService.getproveedor(id);
     }
     @DeleteMapping("/{id}")
-    public void deleteById(@RequestParam int id) {
+    public void deleteById(@PathVariable @RequestParam int id) {
         proveedorService.deleteproveedor(id);
     }
 }

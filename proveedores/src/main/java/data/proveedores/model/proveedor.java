@@ -1,4 +1,4 @@
-package proveedores.model;
+package data.proveedores.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

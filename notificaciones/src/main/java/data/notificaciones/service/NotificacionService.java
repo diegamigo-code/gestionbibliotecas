@@ -1,4 +1,4 @@
-package notificaciones.service;
+package data.notificaciones.service;
 
 import data.notificaciones.model.Notificacion;
 import data.notificaciones.repository.NotificacionRepository;

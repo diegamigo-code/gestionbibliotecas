@@ -1,4 +1,4 @@
-package notificaciones.model;
+package data.notificaciones.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

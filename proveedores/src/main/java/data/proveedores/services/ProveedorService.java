@@ -1,4 +1,4 @@
-package proveedores.services;
+package data.proveedores.services;
 
 import data.proveedores.model.proveedor;
 import data.proveedores.repository.ProveedorRepository;

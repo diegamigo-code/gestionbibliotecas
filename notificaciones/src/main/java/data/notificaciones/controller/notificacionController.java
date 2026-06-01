@@ -1,4 +1,4 @@
-package notificaciones.controller;
+package data.notificaciones.controller;
 
 import data.notificaciones.model.Notificacion;
 import data.notificaciones.service.NotificacionService;

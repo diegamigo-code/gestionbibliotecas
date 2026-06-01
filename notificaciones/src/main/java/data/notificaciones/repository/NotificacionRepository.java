@@ -1,4 +1,4 @@
-package notificaciones.repository;
+package data.notificaciones.repository;
 import data.notificaciones.model.Notificacion;
 
 import org.springframework.data.jpa.repository.JpaRepository;

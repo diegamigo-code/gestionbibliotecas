@@ -1,4 +1,4 @@
-package notificaciones.model.DTO;
+package data.notificaciones.model.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
