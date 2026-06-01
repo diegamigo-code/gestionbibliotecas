@@ -1,4 +1,4 @@
-package data.proveedores.repository;
+package proveedores.repository;
 
 import data.proveedores.model.proveedor;
 import org.springframework.data.domain.Sort;

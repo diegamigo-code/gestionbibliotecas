@@ -1,4 +1,4 @@
-package data.notificaciones.service;
+package notificaciones.service;
 
 import data.notificaciones.model.Notificacion;
 import data.notificaciones.repository.NotificacionRepository;
@@ -23,5 +23,6 @@ public class NotificacionService {
     }
     public void deleteNotificaciones(int id){repositoryNotificacion.deleteById(id);
     }
+
     
 }
