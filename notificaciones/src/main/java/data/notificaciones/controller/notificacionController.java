@@ -14,7 +14,7 @@ public class notificacionController {
     @Autowired
     private NotificacionService NotificacionService;
 
-
+    {}
 
     @GetMapping
     public List<Notificacion> findAll() {
