@@ -14,7 +14,7 @@
     </parent>
 
     <groupId>dev.diegoamigo</groupId>
-    <artifactId>multas</artifactId>
+    <artifactId>prestamos</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>multas</name>
     <description>Microservicio de Prestamo</description>
@@ -99,6 +99,9 @@
             <artifactId>spring-boot-starter-flyway-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+
 
     </dependencies>
 
