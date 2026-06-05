@@ -1,8 +1,6 @@
 package dev.diemigo.dev.auditoria.model;
 
-
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +8,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "RegistrosAuditoria",
+@Table(
+        name = "registros_auditoria",
         indexes = {
-        @Index(name = "idx_servicio_origen", columnList = "servicio_origen"),
-        @Index(name= "idx_resultado", columnList = "resultado"),
-        @Index(name = "idx_fecha_hora", columnList = "fecha_hora")
+                @Index(name = "idx_servicio_origen", columnList = "servicio_origen"),
+                @Index(name = "idx_resultado", columnList = "resultado"),
+                @Index(name = "idx_fecha_hora", columnList = "fecha_hora")
         }
 )
 @Data
@@ -26,18 +25,19 @@ public class RegistroAuditoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "servicio_origen", nullable = false)
     private String servicioOrigen;
 
-    @Column(nullable = false)
+    @Column(name = "accion", nullable = false)
     private String accion;
 
     @Column(columnDefinition = "TEXT")
     private String detalle;
 
+    @Column(name = "usuario_responsable")
     private String usuarioResponsable;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
 
     @Column(nullable = false)
