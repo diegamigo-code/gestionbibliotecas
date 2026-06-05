@@ -16,7 +16,7 @@
 	<groupId>dev.diegoamigo</groupId>
 	<artifactId>multas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>multas</name>
+	<name>devoluciones</name>
 	<description>Microservicio de Devolucion</description>
 
 	<properties>

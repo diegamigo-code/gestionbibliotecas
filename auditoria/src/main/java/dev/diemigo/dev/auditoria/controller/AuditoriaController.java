@@ -1,6 +1,6 @@
 package dev.diemigo.dev.auditoria.controller;
 
-// IMPORTACIONES DE SPRING Y HATEOAS (Las que te están dando dolor de cabeza)
+// IMPORTACIONES DE SPRING Y HATEOAS
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
