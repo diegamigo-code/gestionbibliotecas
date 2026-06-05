@@ -14,7 +14,7 @@
 	</parent>
 
 	<groupId>dev.diegoamigo</groupId>
-	<artifactId>devoluciobe</artifactId>
+	<artifactId><devoluciobe> </devoluciobe></artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>devoluciones</name>
 	<description>Microservicio de Devolucion</description>
