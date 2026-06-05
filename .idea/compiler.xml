@@ -20,8 +20,8 @@
         <module name="multas (2)" />
         <module name="multas (3)" />
         <module name="usuarios" />
-        <module name="prestamos" />
         <module name="inventario" />
+        <module name="prestamos" />
         <module name="devoluciones" />
       </profile>
       <profile name="Annotation profile for notificaciones" enabled="true">
