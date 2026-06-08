@@ -1,6 +1,6 @@
 package dev.diemigo.auditoria.exception;
 
-import dev.diemigo.dev.auditoria.dto.ErrorResponse;
+import dev.diemigo.auditoria.dto.ErrorResponse;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
