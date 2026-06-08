@@ -16,7 +16,7 @@
     <groupId>dev.diegoamigo</groupId>
     <artifactId>prestamos</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>multas</name>
+    <name>Prestamos</name>
     <description>Microservicio de Prestamo</description>
 
     <properties>
