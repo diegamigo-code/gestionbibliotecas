@@ -17,8 +17,6 @@
         </processorPath>
         <module name="libros" />
         <module name="multas" />
-        <module name="multas (2)" />
-        <module name="multas (3)" />
         <module name="usuarios" />
         <module name="inventario" />
         <module name="prestamos" />
@@ -60,8 +58,6 @@
       <module name="inventario" options="-parameters" />
       <module name="libros" options="-parameters" />
       <module name="multas" options="-parameters" />
-      <module name="multas (2)" options="-parameters" />
-      <module name="multas (3)" options="-parameters" />
       <module name="notificaciones" options="-parameters" />
       <module name="prestamos" options="-parameters" />
       <module name="proveedores" options="-parameters" />
