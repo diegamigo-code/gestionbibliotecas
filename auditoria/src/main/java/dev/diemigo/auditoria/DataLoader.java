@@ -1,7 +1,7 @@
 package dev.diemigo.auditoria;
 
-import dev.diemigo.dev.auditoria.model.RegistroAuditoria;
-import dev.diemigo.dev.auditoria.repository.RegistroAuditoriaRepository;
+import dev.diemigo.auditoria.model.RegistroAuditoria;
+import dev.diemigo.auditoria.repository.RegistroAuditoriaRepository;
 import net.datafaker.Faker;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 // IMPORTACIONES DE TU PROYECTO
-import dev.diemigo.dev.auditoria.dto.AuditoriaDTO;
-import dev.diemigo.dev.auditoria.service.AuditoriaService;
+import dev.diemigo.auditoria.dto.AuditoriaDTO;
+import dev.diemigo.auditoria.service.AuditoriaService;
 
 // UTILIDADES DE JAVA
 import java.util.List;

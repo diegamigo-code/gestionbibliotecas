@@ -1,7 +1,7 @@
 package dev.diemigo.auditoria.assembler;
 
-import dev.diemigo.dev.auditoria.controller.AuditoriaController;
-import dev.diemigo.dev.auditoria.dto.AuditoriaDTO;
+import dev.diemigo.auditoria.controller.AuditoriaController;
+import dev.diemigo.auditoria.dto.AuditoriaDTO;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
