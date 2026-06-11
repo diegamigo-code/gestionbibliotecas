@@ -1,6 +1,5 @@
 package data.notificaciones.controller;
 
-import data.notificaciones.model.Notificacion;
 import data.notificaciones.service.NotificacionService;
 import data.notificaciones.model.DTO.DTONotificaciones;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +14,18 @@ public class notificacionController {
     private NotificacionService NotificacionService;
 
     @GetMapping
-    public List<Notificacion> findAll() {
+    public List<DTONotificaciones> findAll() {
         return NotificacionService.obtenerNotificaciones();
 
     }
 
     @GetMapping("/{id}")
-    public Notificacion findById(@PathVariable int id) {
+    public DTONotificaciones findById(@PathVariable int id) {
 
-        return NotificacionService.getNotificaciones(id);
+        return NotificacionService.getNotificacionesById(id);
     }
+
+
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable int id)
