@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: false
     database-platform: org.hibernate.dialect.MySQLDialect
 
@@ -19,12 +19,21 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
 
+  cloud:
+    discovery:
+      enabled: false
+
 server:
   port: 8080
 
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+  enable-hateoas: false
+
+eureka:
+  client:
+    enabled: false
 
 logging:
   level:
