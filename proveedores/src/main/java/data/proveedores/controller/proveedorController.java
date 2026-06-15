@@ -1,4 +1,5 @@
 package data.proveedores.controller;
+import data.proveedores.model.DTO.proveedorDTO;
 import data.proveedores.model.proveedor;
 import data.proveedores.services.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,8 @@ public class proveedorController {
     }
 
     @GetMapping("Id")
-    public proveedor findById(@RequestParam Integer id) {
+    public proveedorDTO findById(@RequestParam Integer id) {
         return proveedorService.getproveedor(id);
-
     }
     @PutMapping("")
     public proveedor updateProveedor(@RequestBody proveedor proveedor) {
