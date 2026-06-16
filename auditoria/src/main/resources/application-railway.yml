@@ -1,11 +1,11 @@
 spring:
   application:
-    name: test.auditoria
+    name: auditoria
 
   datasource:
-    url: ${TEST_DB_URL:jdbc:mysql://localhost:3306/test_auditoria}
-    username: ${TEST_DB_USERNAME:root}
-    password: ${TEST_DB_PASSWORD:}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -23,14 +23,14 @@ spring:
     discovery:
       enabled: false
 
+server:
+  port: ${PORT:8080}
+
 eureka:
   client:
     enabled: false
     register-with-eureka: false
     fetch-registry: false
-
-server:
-  port: 0
 
 springdoc:
   swagger-ui:
