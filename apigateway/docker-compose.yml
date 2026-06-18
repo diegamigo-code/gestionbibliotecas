@@ -13,6 +13,13 @@ services:
       - "3307:3306"
     volumes:
       - ../docker/mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - apigateway-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
 
   eurekaserver:
     build:
@@ -21,28 +28,59 @@ services:
     container_name: gateway-eurekaserver
     ports:
       - "8761:8761"
+    networks:
+      - apigateway-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
 
   auditoria:
     build:
       context: ../auditoria
     image: auditoria:1.0
     container_name: gateway-auditoria
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dev_auditoria
     depends_on:
-      - mysql
-      - eurekaserver
+      mysql:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
     ports:
       - "8080:8080"
+    networks:
+      - apigateway-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
 
   reservas:
     build:
       context: ../reservas
     image: reservas:1.0
     container_name: gateway-reservas
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dev_reservas
     depends_on:
-      - mysql
-      - eurekaserver
+      mysql:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
     ports:
       - "8082:8082"
+    networks:
+      - apigateway-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
 
   apigateway:
     build:
@@ -50,8 +88,22 @@ services:
     image: apigateway:1.0
     container_name: gateway-service
     depends_on:
-      - auditoria
-      - reservas
-      - eurekaserver
+      auditoria:
+        condition: service_healthy
+      reservas:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
     ports:
       - "8081:8081"
+    networks:
+      - apigateway-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+
+networks:
+  apigateway-network:
+    driver: bridge
