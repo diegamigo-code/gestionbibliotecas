@@ -1,4 +1,4 @@
-package data.proveedores.model.DTO;
+package dev.proveedores.model.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
