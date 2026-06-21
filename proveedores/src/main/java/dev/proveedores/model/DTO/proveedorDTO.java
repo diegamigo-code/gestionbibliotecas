@@ -17,6 +17,5 @@ public class proveedorDTO {
     @NotNull
     private String email_proveedor;
     @NotNull
-    private String Descripcion;
+    private String descripcion;
 }
-
