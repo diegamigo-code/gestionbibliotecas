@@ -1,8 +1,8 @@
-package data.notificaciones.service;
+package dev.notificaciones.service;
 
-import data.notificaciones.model.Notificacion;
-import data.notificaciones.repository.NotificacionRepository;
-import data.notificaciones.model.DTO.DTONotificaciones;
+import dev.notificaciones.model.Notificacion;
+import dev.notificaciones.repository.NotificacionRepository;
+import dev.notificaciones.model.DTO.DTONotificaciones;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

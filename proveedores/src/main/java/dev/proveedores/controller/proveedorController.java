@@ -1,7 +1,7 @@
-package data.proveedores.controller;
-import data.proveedores.model.DTO.proveedorDTO;
-import data.proveedores.model.proveedor;
-import data.proveedores.services.ProveedorService;
+package dev.proveedores.controller;
+import dev.proveedores.model.DTO.proveedorDTO;
+import dev.proveedores.model.proveedor;
+import dev.proveedores.services.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

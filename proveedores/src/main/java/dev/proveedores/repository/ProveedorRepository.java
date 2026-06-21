@@ -1,6 +1,6 @@
-package data.proveedores.repository;
+package dev.proveedores.repository;
 
-import data.proveedores.model.proveedor;
+import dev.proveedores.model.proveedor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

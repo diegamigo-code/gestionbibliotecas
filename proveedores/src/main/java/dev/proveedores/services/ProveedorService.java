@@ -1,7 +1,7 @@
-package data.proveedores.services;
-import data.proveedores.model.DTO.proveedorDTO;
-import data.proveedores.model.proveedor;
-import data.proveedores.repository.ProveedorRepository;
+package dev.proveedores.services;
+import dev.proveedores.model.DTO.proveedorDTO;
+import dev.proveedores.model.proveedor;
+import dev.proveedores.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

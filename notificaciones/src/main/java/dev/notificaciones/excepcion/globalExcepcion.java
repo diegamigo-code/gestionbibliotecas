@@ -1,4 +1,4 @@
-package data.notificaciones.excepcion;
+package dev.notificaciones.excepcion;
 
 public class globalExcepcion {
 }
