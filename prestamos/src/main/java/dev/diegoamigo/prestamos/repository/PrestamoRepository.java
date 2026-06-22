@@ -1,4 +1,4 @@
-package dev.diemigo.prestamos.repository;
+package dev.diegoamigo.prestamos.repository;
 
 import dev.diemigo.prestamos.model.Prestamo;
 import org.springframework.data.jpa.repository.JpaRepository;

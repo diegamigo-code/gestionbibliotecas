@@ -1,4 +1,4 @@
-package dev.diemigo.prestamos.assembler;
+package dev.diegoamigo.prestamos.assembler;
 
 import dev.diemigo.prestamos.controller.PrestamoController;
 import dev.diemigo.prestamos.dto.PrestamoRespuestaDTO;

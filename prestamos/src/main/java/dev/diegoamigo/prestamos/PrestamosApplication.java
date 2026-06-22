@@ -1,4 +1,4 @@
-package dev.diemigo.p;
+package dev.diegoamigo.prestamos; // <-- Cambiado de diegoamigo a diemigo
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

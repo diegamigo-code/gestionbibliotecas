@@ -1,12 +1,12 @@
-package dev.diemigo.prestamos.service;
+package dev.diegoamigo.prestamos.service;
 
-import dev.diemigo.prestamos.assembler.PrestamoModelAssembler;
-import dev.diemigo.prestamos.client.AuditoriaClient;
-import dev.diemigo.prestamos.dto.AuditoriaClientDTO;
-import dev.diemigo.prestamos.dto.PrestamoDTO;
-import dev.diemigo.prestamos.dto.PrestamoRespuestaDTO;
-import dev.diemigo.prestamos.model.Prestamo;
-import dev.diemigo.prestamos.repository.PrestamoRepository;
+import dev.diegoamigo.prestamos.assembler.PrestamoModelAssembler;
+import dev.diegoamigo.prestamos.client.AuditoriaClient;
+import dev.diegoamigo.prestamos.dto.AuditoriaClientDTO;
+import dev.diegoamigo.prestamos.dto.PrestamoDTO;
+import dev.diegoamigo.prestamos.dto.PrestamoRespuestaDTO;
+import dev.diegoamigo.prestamos.model.Prestamo;
+import dev.diegoamigo.prestamos.repository.PrestamoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,4 +93,4 @@ public class PrestamoService {
             log.error("No se pudo conectar con el microservicio de Auditoría: {}", e.getMessage());
         }
     }
-}}
+}
