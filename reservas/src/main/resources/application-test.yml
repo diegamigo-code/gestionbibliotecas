@@ -38,5 +38,4 @@ springdoc:
 
 logging:
   level:
-    data.reservas: INFO
     org.hibernate.SQL: WARN

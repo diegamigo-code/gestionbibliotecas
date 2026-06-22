@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: auditoria-service
+              uri: lb://AUDITORIA
+              predicates:
+                - Path=/api/auditoria/**
+            - id: reservas-service
+              uri: lb://RESERVAS
+              predicates:
+                - Path=/api/reservas/**
+            - id: proveedores-service
+              uri: lb://PROVEEDORES
+              predicates:
+                - Path=/api/proveedor/**
+            - id: notificaciones-service
+              uri: lb://NOTIFICACIONES
+              predicates:
+                - Path=/api/notificaciones/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

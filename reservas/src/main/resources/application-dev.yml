@@ -34,5 +34,4 @@ eureka:
 
 logging:
   level:
-    data.reservas: DEBUG
     org.hibernate.SQL: WARN

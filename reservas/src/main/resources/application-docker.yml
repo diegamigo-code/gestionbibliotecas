@@ -3,7 +3,6 @@ spring:
     name: reservas
 
   datasource:
-    url: jdbc:mysql://mysql:3306/dev_reservas
     username: dev
     password: dev123
     driver-class-name: com.mysql.cj.jdbc.Driver
