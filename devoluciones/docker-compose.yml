@@ -1,0 +1,60 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: devoluciones-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: dev_devoluciones
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3312:3306"
+    networks:
+      - devoluciones-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+
+  eurekaserver:
+    build:
+      context: ../eurekaserver
+    image: eurekaserver:1.0
+    container_name: devoluciones-eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - devoluciones-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+
+  devoluciones:
+    build:
+      context: .
+    image: devoluciones:1.0
+    container_name: devoluciones-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+    ports:
+      - "8086:8086"
+    networks:
+      - devoluciones-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/actuator/health"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+
+networks:
+  devoluciones-network:
+    driver: bridge

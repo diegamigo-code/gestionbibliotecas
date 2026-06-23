@@ -11,8 +11,8 @@
 	<groupId>dev.diemigo</groupId>
 	<artifactId>multas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>auditoria</name>
-	<description>Microservicio de Auditoría</description>
+	<name>multas</name>
+	<description>Microservicio de Multas</description>
 
 	<properties>
 		<java.version>21</java.version>
@@ -68,6 +68,14 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 		<!-- SWAGGER / OPENAPI -->
@@ -131,6 +139,14 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.12</version>
+				<configuration>
+					<excludes>
+						<exclude>dev/diemigo/multas/exception/GlobalExceptionHandler*</exclude>
+						<exclude>dev/diemigo/multas/assembler/MultaAssembler*</exclude>
+						<exclude>dev/diemigo/multas/config/*</exclude>
+						<exclude>dev/diemigo/multas/MultasApplication*</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
