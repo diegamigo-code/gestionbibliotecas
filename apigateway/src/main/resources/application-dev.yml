@@ -26,6 +26,18 @@ spring:
               uri: lb://NOTIFICACIONES
               predicates:
                 - Path=/api/notificaciones/**
+            - id: prestamos-service
+              uri: lb://PRESTAMOS
+              predicates:
+                - Path=/api/prestamos/**
+            - id: devoluciones-service
+              uri: lb://DEVOLUCIONES
+              predicates:
+                - Path=/api/devoluciones/**
+            - id: multas-service
+              uri: lb://MULTAS
+              predicates:
+                - Path=/api/multas/**
 
 eureka:
   client:

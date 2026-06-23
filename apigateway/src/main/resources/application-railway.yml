@@ -28,6 +28,18 @@ spring:
               uri: ${NOTIFICACIONES_SERVICE_URL:http://localhost:8084}
               predicates:
                 - Path=/api/notificaciones/**
+            - id: prestamos-service
+              uri: ${PRESTAMOS_SERVICE_URL:http://localhost:8085}
+              predicates:
+                - Path=/api/prestamos/**
+            - id: devoluciones-service
+              uri: ${DEVOLUCIONES_SERVICE_URL:http://localhost:8086}
+              predicates:
+                - Path=/api/devoluciones/**
+            - id: multas-service
+              uri: ${MULTAS_SERVICE_URL:http://localhost:8087}
+              predicates:
+                - Path=/api/multas/**
 
 eureka:
   client:
