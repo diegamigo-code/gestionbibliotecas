@@ -43,9 +43,11 @@ public class UsuarioService {
 
     @Transactional
     public UsuarioRespuestaDTO actualizarUsuario(Long id, UsuarioRespuestaDTO dto) {
+        log.debug("Actualizando usuario en la base de datos: {}", dto);
         return usuarioRepository.findById(id)
                 .map(usuario -> {
                     usuario.setCorreo(dto.getCorreo());
+                    log.info("Usuario actualizado en la base de datos: {}", id);
                     return convertirADTO(usuarioRepository.save(usuario));
                 })
                 .orElseThrow(() -> new RuntimeException("Usuario con ID " + id + " no encontrado"));
@@ -53,6 +55,8 @@ public class UsuarioService {
 
     @Transactional(readOnly = true)
     public List<UsuarioRespuestaDTO> listarUsuarios() {
+
+        log.debug("Listando usuarios en la base de datos");
         return usuarioRepository.findAll()
                 .stream()
                 .map(this::convertirADTO)
@@ -61,15 +65,24 @@ public class UsuarioService {
 
     @Transactional(readOnly = true)
     public UsuarioRespuestaDTO buscarPorId(Long id) {
+
+        log.debug("Buscando usuario en la base de datos: {}", id);
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("No se encontró el usuario con ID: " + id));
+
+        log.info("Usuario encontrado en la base de datos: {}", usuario);
         return convertirADTO(usuario);
     }
 
     public void eliminarUsuario(Long id) {
+
+        log.debug("Eliminando usuario en la base de datos: {}", id);
+
         if (!usuarioRepository.existsById(id)) {
             throw new RuntimeException("No se puede eliminar: El usuario no existe");
         }
+
+        log.info("Usuario eliminado en la base de datos: {}", id);
         usuarioRepository.deleteById(id);
     }
 }

@@ -34,6 +34,7 @@ eureka:
     fetch-registry: true
 
 logging:
+  config: classpath:logback-spring.xml
   level:
     dev.diemigo.usuarios: DEBUG
     org.hibernate.SQL: WARN
