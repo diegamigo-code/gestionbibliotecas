@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: usuarios
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev_usuarios?createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  enable-hateoas: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    dev.diemigo.usuarios: DEBUG
+    org.hibernate.SQL: WARN

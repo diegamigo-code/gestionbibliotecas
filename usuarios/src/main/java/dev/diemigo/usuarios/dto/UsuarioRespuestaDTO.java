@@ -4,17 +4,18 @@ package dev.diemigo.usuarios.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioRespuestaDTO {
+@EqualsAndHashCode(callSuper = false)
+public class UsuarioRespuestaDTO extends RepresentationModel<UsuarioRespuestaDTO> {
 
     @NotNull(message = "Este campo no puede estar vacío")
-    private int id;
+    private Long id;
 
     @Email(message = "El formato de correo no es válido")
     @NotBlank(message = "El correo es obligatorio")

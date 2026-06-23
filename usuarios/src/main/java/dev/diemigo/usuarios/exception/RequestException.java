@@ -1,13 +1,11 @@
 package dev.diemigo.usuarios.exception;
 
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class NotFoundException extends RuntimeException {
+public class RequestException extends RuntimeException {
 
-    public NotFoundException(String message) {
+    public RequestException(String message) {
         super(message);
     }
-
 }
