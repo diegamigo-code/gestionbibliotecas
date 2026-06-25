@@ -46,6 +46,10 @@ spring:
               uri: lb://LIBROS
               predicates:
                 - Path=/api/libros/**
+            - id: inventario-service
+              uri: lb://INVENTARIO
+              predicates:
+                - Path=/api/inventarios/**
 
 eureka:
   client:

@@ -48,6 +48,10 @@ spring:
               uri: ${LIBROS_SERVICE_URL:http://localhost:8089}
               predicates:
                 - Path=/api/libros/**
+            - id: inventario-service
+              uri: ${INVENTARIO_SERVICE_URL:http://localhost:8090}
+              predicates:
+                - Path=/api/inventarios/**
 
 eureka:
   client:

@@ -1,4 +1,4 @@
-CREATE TABLE usuarios (
+CREATE TABLE inventario (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     id_libro BIGINT,
     titulo VARCHAR(100),
