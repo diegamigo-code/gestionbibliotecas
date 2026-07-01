@@ -3,6 +3,7 @@ spring:
     name: reservas
 
   datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql-reservas:3306/dev_reservas?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC}
     username: dev
     password: dev123
     driver-class-name: com.mysql.cj.jdbc.Driver

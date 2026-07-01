@@ -3,16 +3,21 @@ spring:
     name: notificaciones
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql-notificaciones:3306/dev_notificaciones}
-    username: dev
-    password: dev123
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql-notificaciones:3306/dev_notificaciones?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:dev}
+    password: ${SPRING_DATASOURCE_PASSWORD:dev123}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: false
     database-platform: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
 
 server:
   port: 8084
